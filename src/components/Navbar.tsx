@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "À propos", href: "#about" },
@@ -30,8 +31,9 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4">
-        <a href="#" className="font-display text-xl font-bold text-foreground">
-          MD<span className="text-primary">.</span>
+        <a href="#" className="flex items-center gap-2 font-display text-xl font-bold text-foreground">
+          <img src={logo} alt="MouridDev" className="w-8 h-8 rounded-full" />
+          MouridDev
         </a>
 
         {/* Desktop */}
