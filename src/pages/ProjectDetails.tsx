@@ -1,4 +1,4 @@
-import { ExternalLink, Github, ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import fallbackImage from "@/assets/hero-bg.jpg";
 import { getProjectByIdOrSlug, getRelatedProjects } from "@/data/projects";
@@ -7,55 +7,53 @@ const ProjectDetails = () => {
   const { projectId } = useParams();
   const project = projectId ? getProjectByIdOrSlug(projectId) : undefined;
 
-  if (!project) {
-    return <Navigate to="/not-found" replace />;
-  }
+  if (!project) return <Navigate to="/not-found" replace />;
 
   const relatedProjects = getRelatedProjects(project.id);
 
   return (
-    <main className="min-h-screen bg-background py-10 px-4 md:px-8">
+    <main className="min-h-screen bg-background px-4 py-10 md:px-8">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-8">
           <Link
             to="/"
             state={{ scrollTo: "projects" }}
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            className="inline-flex items-center gap-2 rounded text-sm font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <ArrowLeft size={16} />
             Retour aux projets
           </Link>
         </div>
 
-        <article className="glass rounded-2xl overflow-hidden mb-10">
-          <img
-            src={project.coverImage || fallbackImage}
-            alt={`Image principale du projet ${project.title}`}
-            className="w-full h-72 md:h-[420px] object-cover"
-          />
+        <article className="glass mb-10 overflow-hidden rounded-2xl">
+          <div className="w-full aspect-[16/8] min-h-[240px] overflow-hidden bg-muted">
+            <img
+              src={project.coverImage || fallbackImage}
+              alt={`Image principale du projet ${project.title}`}
+              className="h-full w-full object-cover object-center"
+            />
+          </div>
 
           <div className="p-6 md:p-10">
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-              <h1 className="text-3xl md:text-4xl font-display font-bold">{project.title}</h1>
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <h1 className="font-display text-3xl font-bold md:text-4xl">{project.title}</h1>
               {project.featured && (
-                <span className="text-xs uppercase tracking-wider font-display font-semibold text-primary bg-primary/10 px-2 py-1 rounded">
+                <span className="rounded bg-primary/10 px-2 py-1 font-display text-xs font-semibold uppercase tracking-wider text-primary">
                   Featured
                 </span>
               )}
             </div>
 
-            <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
-              {project.longDescription}
-            </p>
+            <p className="mb-8 text-base leading-relaxed text-muted-foreground md:text-lg">{project.longDescription}</p>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="mb-8 grid gap-8 md:grid-cols-2">
               <section>
-                <h2 className="text-xl font-display font-semibold mb-3">Stack</h2>
+                <h2 className="mb-3 font-display text-xl font-semibold">Stack</h2>
                 <div className="flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs font-body px-2 py-1 rounded bg-secondary text-secondary-foreground"
+                      className="rounded bg-secondary px-2 py-1 font-body text-xs text-secondary-foreground"
                     >
                       {tech}
                     </span>
@@ -64,41 +62,41 @@ const ProjectDetails = () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-display font-semibold mb-3">Role</h2>
+                <h2 className="mb-3 font-display text-xl font-semibold">Role</h2>
                 <p className="text-muted-foreground">{project.role}</p>
               </section>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="mb-8 grid gap-8 md:grid-cols-2">
               <section>
-                <h2 className="text-xl font-display font-semibold mb-3">Defis</h2>
+                <h2 className="mb-3 font-display text-xl font-semibold">Defis</h2>
                 {project.challenges?.length ? (
                   <ul className="space-y-2 text-muted-foreground">
                     {project.challenges.map((challenge) => (
-                      <li key={challenge}>• {challenge}</li>
+                      <li key={challenge}>- {challenge}</li>
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-muted-foreground">Aucun defi renseigné.</p>
+                  <p className="text-muted-foreground">Aucun defi renseigne.</p>
                 )}
               </section>
 
               <section>
-                <h2 className="text-xl font-display font-semibold mb-3">Resultats</h2>
+                <h2 className="mb-3 font-display text-xl font-semibold">Resultats</h2>
                 {project.outcomes?.length ? (
                   <ul className="space-y-2 text-muted-foreground">
                     {project.outcomes.map((outcome) => (
-                      <li key={outcome}>• {outcome}</li>
+                      <li key={outcome}>- {outcome}</li>
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-muted-foreground">Aucun resultat détaillé.</p>
+                  <p className="text-muted-foreground">Aucun resultat detaille.</p>
                 )}
               </section>
             </div>
 
             <section className="mb-8">
-              <h2 className="text-xl font-display font-semibold mb-3">Synthese</h2>
+              <h2 className="mb-3 font-display text-xl font-semibold">Synthese</h2>
               <p className="text-muted-foreground">{project.results}</p>
             </section>
 
@@ -108,7 +106,7 @@ const ProjectDetails = () => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md px-3 py-2 bg-secondary text-secondary-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="inline-flex items-center gap-2 rounded-md bg-secondary px-3 py-2 text-secondary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   <Github size={16} /> Code
                 </a>
@@ -118,7 +116,7 @@ const ProjectDetails = () => {
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md px-3 py-2 bg-primary text-primary-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-2 text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   <ExternalLink size={16} /> Demo
                 </a>
@@ -127,36 +125,50 @@ const ProjectDetails = () => {
           </div>
         </article>
 
-        {project.gallery?.length ? (
+        {!!project.gallery?.length && (
           <section className="mb-10">
-            <h2 className="text-2xl font-display font-bold mb-4">Galerie</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <h2 className="mb-4 font-display text-2xl font-bold">Galerie</h2>
+            <div className="grid gap-4 sm:grid-cols-2">
               {project.gallery.map((image, index) => (
-                <img
+                <div
                   key={`${project.id}-gallery-${index + 1}`}
-                  src={image}
-                  alt={`Capture ${index + 1} du projet ${project.title}`}
-                  className="w-full h-56 md:h-72 object-cover rounded-xl border border-border"
-                  loading="lazy"
-                />
+                  className="aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted"
+                >
+                  <img
+                    src={image}
+                    alt={`Capture ${index + 1} du projet ${project.title}`}
+                    className="h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
               ))}
             </div>
           </section>
-        ) : null}
+        )}
 
         <section>
-          <h2 className="text-2xl font-display font-bold mb-4">Autres projets</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+          <h2 className="mb-4 font-display text-2xl font-bold">Autres projets</h2>
+          <div className="grid gap-4 md:grid-cols-3">
             {relatedProjects.map((related) => (
-              <article key={related.id} className="glass rounded-xl p-4">
-                <h3 className="font-display font-semibold mb-2">{related.title}</h3>
-                <p className="text-sm text-muted-foreground mb-3">{related.description}</p>
-                <Link
-                  to={`/projects/${related.id}`}
-                  className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-                >
-                  Voir details
-                </Link>
+              <article key={related.id} className="glass overflow-hidden rounded-xl">
+                <div className="aspect-[16/10] overflow-hidden bg-muted">
+                  <img
+                    src={related.coverImage || fallbackImage}
+                    alt={`Apercu du projet ${related.title}`}
+                    className="h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="mb-2 font-display font-semibold">{related.title}</h3>
+                  <p className="mb-3 text-sm text-muted-foreground">{related.description}</p>
+                  <Link
+                    to={`/projects/${related.id}`}
+                    className="rounded text-sm font-semibold text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    Voir details
+                  </Link>
+                </div>
               </article>
             ))}
           </div>

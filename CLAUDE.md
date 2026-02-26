@@ -15,7 +15,7 @@ Create:
 - Project strengths: POS/e-commerce, document management systems, admin dashboards, RBAC (roles/permissions), REST API design, payment integration, CI/CD, Swagger/OpenAPI.
 - Highlight these projects:
   - Firdawsi_laravel: React + Laravel platform (orders, delivery, payment, admin).
-  - Naelshop221: POS + storefront + online orders + PayTech + Capacitor packaging.
+  - PersonalPos: POS + storefront + online orders + PayTech + Capacitor packaging.
   - Shopkeeper's Delight: multi-tenant/multi-store POS with central admin.
   - SAED Document Management: role-based document workflows, messaging, analytics.
   - IA Dev: AI summarization app (FastAPI + OpenAI).

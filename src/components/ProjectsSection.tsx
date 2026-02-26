@@ -13,52 +13,54 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
     className="glass rounded-xl overflow-hidden group"
   >
     <div className="h-1 bg-gradient-to-r from-primary to-accent" />
-    <img
-      src={project.coverImage || fallbackImage}
-      alt={`Aperçu du projet ${project.title}`}
-      className="h-44 w-full object-cover"
-      loading="lazy"
-    />
+    <div className="w-full aspect-[16/10] overflow-hidden bg-muted">
+      <img
+        src={project.coverImage || fallbackImage}
+        alt={`Apercu du projet ${project.title}`}
+        className="h-full w-full object-cover object-center"
+        loading="lazy"
+      />
+    </div>
 
     <div className="p-6">
-      <div className="flex items-start justify-between mb-3 gap-2">
-        <h3 className="font-display font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+      <div className="mb-3 flex items-start justify-between gap-2">
+        <h3 className="font-display text-lg font-bold text-foreground transition-colors group-hover:text-primary">
           {project.title}
         </h3>
         {project.featured && (
-          <span className="text-[10px] uppercase tracking-wider font-display font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded">
+          <span className="rounded bg-primary/10 px-2 py-0.5 font-display text-[10px] font-semibold uppercase tracking-wider text-primary">
             Featured
           </span>
         )}
       </div>
 
-      <p className="text-sm text-muted-foreground font-body mb-4 leading-relaxed">{project.description}</p>
+      <p className="mb-4 font-body text-sm leading-relaxed text-muted-foreground">{project.description}</p>
 
       <div className="mb-4">
-        <p className="text-xs text-primary font-display font-medium mb-1">Role</p>
-        <p className="text-sm text-muted-foreground font-body">{project.role}</p>
+        <p className="mb-1 font-display text-xs font-medium text-primary">Role</p>
+        <p className="font-body text-sm text-muted-foreground">{project.role}</p>
       </div>
 
       <div className="mb-4">
-        <p className="text-xs text-primary font-display font-medium mb-1">Resultats</p>
-        <p className="text-sm text-muted-foreground font-body">{project.results}</p>
+        <p className="mb-1 font-display text-xs font-medium text-primary">Resultats</p>
+        <p className="font-body text-sm text-muted-foreground">{project.results}</p>
       </div>
 
-      <div className="flex flex-wrap gap-1.5 mb-5">
+      <div className="mb-5 flex flex-wrap gap-1.5">
         {project.stack.map((tech) => (
           <span
             key={tech}
-            className="text-[11px] font-body px-2 py-0.5 rounded bg-secondary text-secondary-foreground"
+            className="rounded bg-secondary px-2 py-0.5 font-body text-[11px] text-secondary-foreground"
           >
             {tech}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center flex-wrap gap-3 pt-3 border-t border-border">
+      <div className="flex flex-wrap items-center gap-3 border-t border-border pt-3">
         <Link
           to={`/projects/${project.id}`}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          className="inline-flex items-center gap-1.5 rounded text-xs font-semibold text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           Voir details
         </Link>
@@ -68,7 +70,7 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            className="inline-flex items-center gap-1.5 rounded text-xs font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <Github size={14} /> Code
           </a>
@@ -79,7 +81,7 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
             href={project.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            className="inline-flex items-center gap-1.5 rounded text-xs font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <ExternalLink size={14} /> Demo
           </a>
@@ -102,19 +104,19 @@ const ProjectsSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary font-display text-sm tracking-widest uppercase mb-2">Projets</p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-12">
+          <p className="mb-2 font-display text-sm uppercase tracking-widest text-primary">Projets</p>
+          <h2 className="mb-12 font-display text-3xl font-bold md:text-4xl">
             Ce que j&apos;ai construit<span className="text-primary">.</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featured.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {others.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}

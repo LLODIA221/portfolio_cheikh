@@ -13,8 +13,9 @@ const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if ((location.state as { scrollTo?: string } | null)?.scrollTo === "projects") {
-      const target = document.getElementById("projects");
+    const sectionId = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (sectionId) {
+      const target = document.getElementById(sectionId);
       target?.scrollIntoView({ behavior: "smooth" });
       window.history.replaceState({}, document.title);
     }

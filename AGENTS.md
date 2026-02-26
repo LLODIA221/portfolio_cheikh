@@ -15,7 +15,7 @@ Build:
 - Typical project domains: POS/e-commerce, document management, admin dashboards, role/permission systems, REST APIs, payment integrations, CI/CD, Swagger/OpenAPI.
 - Key projects to showcase:
   - Firdawsi_laravel: delivery/order platform with React frontend + Laravel backend + payments + admin.
-  - Naelshop221: single-store POS + storefront + online ordering + PayTech + Capacitor mobile packaging.
+  - PersonalPos: single-store POS + storefront + online ordering + PayTech + Capacitor mobile packaging.
   - Shopkeeper's Delight: multi-store POS + central administration.
   - SAED Document Management: document management with roles, permissions, messaging, statistics.
   - IA Dev: intelligent summarization app (FastAPI + OpenAI).

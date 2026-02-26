@@ -1,18 +1,19 @@
 import firdawsiCover from "@/assets/projects/firdawsi/cover.jpg";
 import firdawsiImage1 from "@/assets/projects/firdawsi/1.jpg";
 import firdawsiImage2 from "@/assets/projects/firdawsi/2.jpg";
-import naelshopCover from "@/assets/projects/naelshop/cover.jpg";
-import naelshopImage1 from "@/assets/projects/naelshop/1.jpg";
-import naelshopImage2 from "@/assets/projects/naelshop/2.jpg";
+import personalposCover from "@/assets/projects/personalpos/cover.jpg";
+import personalposImage1 from "@/assets/projects/personalpos/1.jpg";
+import personalposImage2 from "@/assets/projects/personalpos/2.jpg";
 import shopkeeperCover from "@/assets/projects/shopkeeper/cover.jpg";
 import shopkeeperImage1 from "@/assets/projects/shopkeeper/1.jpg";
 import shopkeeperImage2 from "@/assets/projects/shopkeeper/2.jpg";
 import saedCover from "@/assets/projects/saed/cover.jpg";
 import saedImage1 from "@/assets/projects/saed/1.jpg";
 import saedImage2 from "@/assets/projects/saed/2.jpg";
-import iecatCover from "@/assets/projects/iecat-cherif/cover.jpg";
-import iecatImage1 from "@/assets/projects/iecat-cherif/1.jpg";
-import iecatImage2 from "@/assets/projects/iecat-cherif/2.jpg";
+import iecatCover from "@/assets/projects/iecat-cherif/cover.png";
+import iecatImage1 from "@/assets/projects/iecat-cherif/1.png";
+import iecatImage2 from "@/assets/projects/iecat-cherif/2.png";
+import iecatImage3 from "@/assets/projects/iecat-cherif/3.png";
 import iaDevCover from "@/assets/projects/ia-dev/cover.jpg";
 import iaDevImage1 from "@/assets/projects/ia-dev/1.jpg";
 import iaDevImage2 from "@/assets/projects/ia-dev/2.jpg";
@@ -26,6 +27,8 @@ export interface PersonalInfo {
   bio: string;
   email: string;
   phone?: string;
+  whatsapp?: string;
+  whatsappMessage?: string;
   location: string;
   github: string;
   linkedin: string;
@@ -77,8 +80,10 @@ export interface Formation {
 export const personalInfo: PersonalInfo = {
   name: "Cheikh DIALLO",
   title: "Développeur Full Stack orienté backend (Java / Spring Boot / Django / API REST)",
-  bio: "Développeur Full Stack basé à Saint-Louis, Sénégal. Mon terrain de jeu préféré est le backend avec Java, Spring Boot, Django et la conception d'API REST robustes. Je travaille sur des produits concrets: gestion documentaire, plateformes de livraison, POS/e-commerce et dashboards d'administration.",
+  bio: "Développeur Full Stack basé à Saint-Louis, Sénégal. Mon terrain de jeu préféré est le backend avec Java, Spring Boot, Django, php et la conception d'API REST robustes. Je travaille sur des produits concrets: gestion documentaire, plateformes de livraison, POS/e-commerce et dashboards d'administration.",
   email: "cheikhdkgdiallo@gmail.com",
+  whatsapp: "221773899658",
+  whatsappMessage: "Bonjour Cheikh, je vous contacte depuis votre portfolio.",
   location: "Saint-Louis, Sénégal",
   github: "https://github.com/LLODIA221",
   linkedin: "https://www.linkedin.com/in/cheikh-diallo-8130b51ba",
@@ -98,6 +103,7 @@ export const skills: Skill[] = [
   { name: "Spring Boot (Java)", category: "backend", level: 82 },
   { name: "Node.js", category: "backend", level: 68 },
   { name: "MySQL", category: "database", level: 90 },
+  {name:"Sqlite", category:"database", level: 80},
   { name: "PostgreSQL", category: "database", level: 74 },
   { name: "Redis", category: "database", level: 62 },
   { name: "Docker", category: "devops", level: 72 },
@@ -135,18 +141,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "naelshop",
-    slug: "naelshop221",
-    title: "NaelShop221",
+    id: "personalpos",
+    slug: "PersonalPos",
+    title: "PersonalPos",
     description: "POS mono-boutique avec storefront e-commerce et commandes en ligne.",
     longDescription:
-      "Solution de point de vente combinant caisse locale, boutique en ligne, commandes internet et paiements PayTech. Le projet inclut un packaging mobile via Capacitor pour l'usage terrain.",
+      "Solution de point de vente, basé sur le projet Shopkeeper's Delight, combinant caisse locale, boutique en ligne, commandes internet et paiements PayTech. Le projet inclut un packaging mobile via Capacitor pour l'usage terrain.",
     stack: ["React", "Vite", "Laravel", "MySQL", "PayTech", "Capacitor"],
     role: "Développeur Full Stack",
     results: "Mise en place d'une solution unifiée vente sur place + vente en ligne.",
-    githubUrl: "https://github.com/LLODIA221/naelshop221",
-    coverImage: naelshopCover,
-    gallery: [naelshopImage1, naelshopImage2],
+    githubUrl: "https://github.com/LLODIA221/PersonalPos",
+    coverImage: personalposCover,
+    gallery: [personalposImage1, personalposImage2],
     challenges: [
       "Synchroniser ventes POS et commandes e-commerce.",
       "Intégrer les paiements PayTech dans un flux unique.",
@@ -220,7 +226,7 @@ export const projects: Project[] = [
     results: "Présence web institutionnelle professionnelle mise en production.",
     demoUrl: "https://iecatcherif.com",
     coverImage: iecatCover,
-    gallery: [iecatImage1, iecatImage2],
+    gallery: [iecatImage1, iecatImage2,iecatImage3],
     challenges: [
       "Construire une identité visuelle crédible et claire.",
       "Optimiser la navigation sur mobile et desktop.",
@@ -309,10 +315,10 @@ export const experiences: Experience[] = [
 export const formations: Formation[] = [
   {
     id: "form1",
-    school: "Université de Dakar",
-    degree: "Licence en Informatique",
-    period: "2019 - 2022",
-    description: "Spécialisation en développement web et systèmes d'information.",
+    school: "Université Gaston Berger de Saint-Louis",
+    degree: "Licence en Informatique de gestion",
+    period: "2021 - 2023",
+    description: "Spécialisation en gestion informatique de l'entreprise.",
   },
 ];
 
@@ -323,3 +329,6 @@ export const skillCategories = {
   devops: { label: "DevOps", icon: "GitBranch" },
   tools: { label: "Outils", icon: "Wrench" },
 } as const;
+
+
+
