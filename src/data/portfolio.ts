@@ -78,7 +78,7 @@ export const personalInfo: PersonalInfo = {
   name: "Cheikh DIALLO",
   title: "Développeur Full Stack orienté backend (Java / Spring Boot / Django / API REST)",
   bio: "Développeur Full Stack basé à Saint-Louis, Sénégal. Mon terrain de jeu préféré est le backend avec Java, Spring Boot, Django et la conception d'API REST robustes. Je travaille sur des produits concrets: gestion documentaire, plateformes de livraison, POS/e-commerce et dashboards d'administration.",
-  email: "cheikhdkgdiallo",
+  email: "cheikhdkgdiallo@gmail.com",
   location: "Saint-Louis, Sénégal",
   github: "https://github.com/LLODIA221",
   linkedin: "https://www.linkedin.com/in/cheikh-diallo-8130b51ba",
