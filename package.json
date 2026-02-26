@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:pages": "node -e \"const { execSync } = require('child_process'); const repo = (process.env.GITHUB_REPOSITORY || '').split('/')[1]; const env = { ...process.env, VITE_BASE_PATH: repo ? `/${repo}/` : '/' }; execSync('vite build', { stdio: 'inherit', shell: true, env });\"",
+    "build:pages": "node scripts/build-pages.cjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
